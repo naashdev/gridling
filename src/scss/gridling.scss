@@ -36,12 +36,12 @@ $medium: $grid-width;
 $small: 767px;
 $xs: 480px;
 
-$breakpoint-xl: "screen and (min-width: #{$xl)})";
-$breakpoint-lg: "screen and (min-width: #{$medium) + 1})";
-$breakpoint-md-and-lg: "screen and (min-width: #{$small) + 1})";
-$breakpoint-md: "screen and (max-width: #{$medium)}) and (min-width: #{$small) + 1})";
-$breakpoint-sm: "screen and (max-width: #{$small)})";
-$breakpoint-xs: "screen and (max-width: #{$xs)})";
+$breakpoint-xl: "screen and (min-width: #{$xl})";
+$breakpoint-lg: "screen and (min-width: #{$medium + 1})";
+$breakpoint-md-and-lg: "screen and (min-width: #{$small + 1})";
+$breakpoint-md: "screen and (max-width: #{$medium}) and (min-width: #{$small + 1})";
+$breakpoint-sm: "screen and (max-width: #{$small})";
+$breakpoint-xs: "screen and (max-width: #{$xs})";
 // Add your own custom breakpoint variables here
 // ...
 
