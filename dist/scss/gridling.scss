@@ -1,6 +1,6 @@
 /*! GRIDLING
  * ---------------------------------------------
- * Version: 1.2.0
+ * Version: 1.2.1
  * Copyright (c) 2017 N. Talbot; Dual licensed: MIT/GPL
  *
  * Description:
@@ -175,3 +175,9 @@ $breakpoint-xs: "screen and (max-width: #{$xs})";
 
 // Margin top
 @include grid-utilities('m-t', 'margin-top', $class-iterations);
+
+// Padding bottom
+@include grid-utilities('p-b', 'padding-bottom', $class-iterations);
+
+// Padding top
+@include grid-utilities('p-t', 'padding-top', $class-iterations);
