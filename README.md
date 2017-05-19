@@ -1,5 +1,5 @@
 ## GRIDLING
-Version: 1.1.0
+Version: 1.2.0
 
 Gridling is a lightweight CSS layout tool for building responsive websites fast.
 Inspired by the Twitter Bootstrap framework, simple row and column classes are used
@@ -14,7 +14,7 @@ to handle all media queries, its system is adaptable and highly customisable.
 3. Media breakpoint variables
 
 ## License
-Copyright (c) 2016 N. Talbot; Dual licensed: MIT/GPL
+Copyright (c) 2017 N. Talbot; Dual licensed: MIT/GPL
 By Nathan Talbot
 
 ## More information:
