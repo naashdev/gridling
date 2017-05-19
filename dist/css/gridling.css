@@ -1,7 +1,7 @@
 /*! GRIDLING
  * ---------------------------------------------
- * Version: 1.1.1
- * Copyright (c) 2016 N. Talbot; Dual licensed: MIT/GPL
+ * Version: 1.2.1
+ * Copyright (c) 2017 N. Talbot; Dual licensed: MIT/GPL
  *
  * Description:
  * ---------------------------------------------
@@ -15,7 +15,7 @@
  * Features:
  * ---------------------------------------------
  * 1. Grid system
- * 2. Spacing utilties
+ * 2. Spacing utilties (Padding and Margin)
  * 3. Media breakpoint variables
  *
  * More information:
@@ -39,6 +39,10 @@
 
 .grid:after {
 	clear: both;
+}
+
+.grid-lg {
+	max-width: 1400px;
 }
 
 .row:before,

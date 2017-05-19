@@ -1,7 +1,7 @@
 /*! GRIDLING
  * ---------------------------------------------
- * Version: 1.1.1
- * Copyright (c) 2016 N. Talbot; Dual licensed: MIT/GPL
+ * Version: 1.2.1
+ * Copyright (c) 2017 N. Talbot; Dual licensed: MIT/GPL
  *
  * Description:
  * ---------------------------------------------
@@ -15,7 +15,7 @@
  * Features:
  * ---------------------------------------------
  * 1. Grid system
- * 2. Spacing utilties
+ * 2. Spacing utilties (Padding and Margin)
  * 3. Media breakpoint variables
  *
  * More information:
@@ -27,7 +27,9 @@
 // Settings
 // ---------------------------------------------
 $grid-width: 1080px;
+$grid-width-lg: 1400px;
 $grid-padding: 20px;
+$class-iterations: 12; // Limit of how many classes to create, eg. up to 'r-g-12'
 
 // Media Breakpoints
 $xl: 1600px;
@@ -45,43 +47,12 @@ $breakpoint-xs: "screen and (max-width: #{$xs})";
 // Add your own custom breakpoint variables here
 // ...
 
-// Core Styles
+// Mixins
 // ---------------------------------------------
-.grid {
-    max-width: $grid-width;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 $grid-padding;
-    // Clearfix
-    &:before, &:after {
-        content: "";
-        display: table;
-    }
-    &:after {
-        clear: both;
-    }
-}
+// Main grid classes
+@mixin grid-columns-and-gutters($col-prefix, $row-prefix, $amount) {
 
-.row {
-    // Clearfix
-    &:before, &:after {
-        content: "";
-        display: table;
-    }
-    &:after {
-        clear: both;
-    }
-}
-
-.col {
-    width: 100%;
-    float: left;
-}
-
-// Grid Utilities
-// ---------------------------------------------
-@mixin grid-styles($col-prefix, $row-prefix) {
-    // Columns
+    // Column widths
     #{$col-prefix}-1-2 {
         width: 50%;
     }
@@ -109,202 +80,98 @@ $breakpoint-xs: "screen and (max-width: #{$xs})";
     #{$col-prefix}-4-5 {
         width: 80%;
     }
-    // Rows
-    #{$row-prefix}-g-1 {
-        margin-left: -10px;
-        > .col {
-            padding-left: 10px;
+
+    // Row gutters
+    @for $val from 1 through $amount {
+        #{$row-prefix}-g-#{$val} {
+            margin-left: ($val * -10px);
+            > .col {
+                padding-left: ($val * 10px);
+            }
         }
     }
-    #{$row-prefix}-g-2 {
-        margin-left: -20px;
-        > .col {
-            padding-left: 20px;
+
+}
+
+// Utilty classes
+@mixin grid-utilities($prefix, $property, $amount) {
+
+    @for $val from 1 through $amount {
+        .#{$prefix}-#{$val} {
+            #{$property}: $val * 10px;
         }
     }
-    #{$row-prefix}-g-3 {
-        margin-left: -30px;
-        > .col {
-            padding-left: 30px;
-        }
+
+}
+
+// Core Styles
+// ---------------------------------------------
+.grid {
+    max-width: $grid-width;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 $grid-padding;
+    // Clearfix
+    &:before, &:after {
+        content: "";
+        display: table;
     }
-    #{$row-prefix}-g-4 {
-        margin-left: -40px;
-        > .col {
-            padding-left: 40px;
-        }
-    }
-    #{$row-prefix}-g-5 {
-        margin-left: -50px;
-        > .col {
-            padding-left: 50px;
-        }
-    }
-    #{$row-prefix}-g-6 {
-        margin-left: -60px;
-        > .col {
-            padding-left: 60px;
-        }
-    }
-    #{$row-prefix}-g-7 {
-        margin-left: -70px;
-        > .col {
-            padding-left: 70px;
-        }
-    }
-    #{$row-prefix}-g-8 {
-        margin-left: -80px;
-        > .col {
-            padding-left: 80px;
-        }
-    }
-    #{$row-prefix}-g-9 {
-        margin-left: -90px;
-        > .col {
-            padding-left: 90px;
-        }
-    }
-    #{$row-prefix}-g-10 {
-        margin-left: -100px;
-        > .col {
-            padding-left: 100px;
-        }
-    }
-    #{$row-prefix}-g-11 {
-        margin-left: -110px;
-        > .col {
-            padding-left: 110px;
-        }
-    }
-    #{$row-prefix}-g-12 {
-        margin-left: -120px;
-        > .col {
-            padding-left: 120px;
-        }
+    &:after {
+        clear: both;
     }
 }
 
-// Print the row and column classes for each breakpoint
+.grid-lg {
+    max-width: $grid-width-lg;
+}
+
+.row {
+    // Clearfix
+    &:before, &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+.col {
+    width: 100%;
+    float: left;
+}
+
+// Grid Utilities
+// ---------------------------------------------
+// Print the column and gutter classes for each breakpoint
 @media #{$breakpoint-md-and-lg} {
-    @include grid-styles('.c', '.r');
+    @include grid-columns-and-gutters('.c', '.r', $class-iterations);
 }
 
 @media #{$breakpoint-xl} {
-    @include grid-styles('.xl', '.xl');
+    @include grid-columns-and-gutters('.xl', '.xl', $class-iterations);
 }
 
 @media #{$breakpoint-lg} {
-    @include grid-styles('.lg', '.lg');
+    @include grid-columns-and-gutters('.lg', '.lg', $class-iterations);
 }
 
 @media #{$breakpoint-md} {
-    @include grid-styles('.md', '.md');
+    @include grid-columns-and-gutters('.md', '.md', $class-iterations);
 }
 
 @media #{$breakpoint-sm} {
-    @include grid-styles('.sm', '.sm');
+    @include grid-columns-and-gutters('.sm', '.sm', $class-iterations);
 }
 
 @media #{$breakpoint-xs} {
-    @include grid-styles('.xs', '.xs');
+    @include grid-columns-and-gutters('.xs', '.xs', $class-iterations);
 }
 
 // Spacing Utitlies
 // ---------------------------------------------
 // Margin bottom
-.m-b-1 {
-    margin-bottom: 10px;
-}
-
-.m-b-2 {
-    margin-bottom: 20px;
-}
-
-.m-b-3 {
-    margin-bottom: 30px;
-}
-
-.m-b-4 {
-    margin-bottom: 40px;
-}
-
-.m-b-5 {
-    margin-bottom: 50px;
-}
-
-.m-b-6 {
-    margin-bottom: 60px;
-}
-
-.m-b-7 {
-    margin-bottom: 70px;
-}
-
-.m-b-8 {
-    margin-bottom: 80px;
-}
-
-.m-b-9 {
-    margin-bottom: 90px;
-}
-
-.m-b-10 {
-    margin-bottom: 100px;
-}
-
-.m-b-11 {
-    margin-bottom: 110px;
-}
-
-.m-b-12 {
-    margin-bottom: 120px;
-}
+@include grid-utilities('m-b', 'margin-bottom', $class-iterations);
 
 // Margin top
-.m-t-1 {
-    margin-top: 10px;
-}
-
-.m-t-2 {
-    margin-top: 20px;
-}
-
-.m-t-3 {
-    margin-top: 30px;
-}
-
-.m-t-4 {
-    margin-top: 40px;
-}
-
-.m-t-5 {
-    margin-top: 50px;
-}
-
-.m-t-6 {
-    margin-top: 60px;
-}
-
-.m-t-7 {
-    margin-top: 70px;
-}
-
-.m-t-8 {
-    margin-top: 80px;
-}
-
-.m-t-9 {
-    margin-top: 90px;
-}
-
-.m-t-10 {
-    margin-top: 100px;
-}
-
-.m-t-11 {
-    margin-top: 110px;
-}
-
-.m-t-12 {
-    margin-top: 120px;
-}
+@include grid-utilities('m-t', 'margin-top', $class-iterations);
