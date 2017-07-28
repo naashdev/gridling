@@ -1,6 +1,6 @@
 /*! GRIDLING
  * ---------------------------------------------
- * Version: 1.2.1
+ * Version: 1.2.2
  * Copyright (c) 2017 N. Talbot; Dual licensed: MIT/GPL
  *
  * Description:
@@ -139,6 +139,7 @@ $breakpoint-xs: "screen and (max-width: #{$xs})";
 .col {
     width: 100%;
     float: left;
+    min-height: 1px;
 }
 
 // Grid Utilities
