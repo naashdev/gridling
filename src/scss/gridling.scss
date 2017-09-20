@@ -1,6 +1,6 @@
 /*! GRIDLING
  * ---------------------------------------------
- * Version: 1.2.2
+ * Version: 1.2.3
  * Copyright (c) 2017 N. Talbot; Dual licensed: MIT/GPL
  *
  * Description:
@@ -142,31 +142,49 @@ $breakpoint-xs: "screen and (max-width: #{$xs})";
     min-height: 1px;
 }
 
-// Grid Utilities
+// Grid & Hiding Utilities
 // ---------------------------------------------
 // Print the column and gutter classes for each breakpoint
 @media #{$breakpoint-md-and-lg} {
     @include grid-columns-and-gutters('.c', '.r', $class-iterations);
+    .hide-md-lg {
+        display: none;
+    }
 }
 
 @media #{$breakpoint-xl} {
     @include grid-columns-and-gutters('.xl', '.xl', $class-iterations);
+    .hide-xl {
+        display: none;
+    }
 }
 
 @media #{$breakpoint-lg} {
     @include grid-columns-and-gutters('.lg', '.lg', $class-iterations);
+    .hide-lg {
+        display: none;
+    }
 }
 
 @media #{$breakpoint-md} {
     @include grid-columns-and-gutters('.md', '.md', $class-iterations);
+    .hide-md {
+        display: none;
+    }
 }
 
 @media #{$breakpoint-sm} {
     @include grid-columns-and-gutters('.sm', '.sm', $class-iterations);
+    .hide-sm {
+        display: none;
+    }
 }
 
 @media #{$breakpoint-xs} {
     @include grid-columns-and-gutters('.xs', '.xs', $class-iterations);
+    .hide-xs {
+        display: none;
+    }
 }
 
 // Spacing Utitlies

@@ -1,6 +1,6 @@
 /*! GRIDLING
  * ---------------------------------------------
- * Version: 1.2.2
+ * Version: 1.2.3
  * Copyright (c) 2017 N. Talbot; Dual licensed: MIT/GPL
  *
  * Description:
@@ -387,6 +387,10 @@
 	padding-left: 120px;
 }
 
+.hide-md-lg {
+	display: none;
+}
+
 }
 
 @media screen and (max-width: 1080px) and (min-width: 768px) {
@@ -521,6 +525,10 @@
 
 .md-g-12 > .col {
 	padding-left: 120px;
+}
+
+.hide-md {
+	display: none;
 }
 
 }
@@ -659,6 +667,10 @@
 	padding-left: 120px;
 }
 
+.hide-lg {
+	display: none;
+}
+
 }
 
 @media screen and (min-width: 1600px) {
@@ -793,6 +805,10 @@
 
 .xl-g-12 > .col {
 	padding-left: 120px;
+}
+
+.hide-xl {
+	display: none;
 }
 
 }
@@ -931,6 +947,10 @@
 	padding-left: 120px;
 }
 
+.hide-sm {
+	display: none;
+}
+
 }
 
 @media screen and (max-width: 480px) {
@@ -1065,6 +1085,10 @@
 
 .xs-g-12 > .col {
 	padding-left: 120px;
+}
+
+.hide-xs {
+	display: none;
 }
 
 }
